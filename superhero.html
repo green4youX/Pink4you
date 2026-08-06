@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pink4You</title>
+  <link rel="icon" type="image/png" href="pink4you.png">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 105, 180, 0.15), transparent 60%), 
+                  linear-gradient(180deg, #0e060a 0%, #140b10 40%, #090507 100%);
+      overflow: hidden;
+    }
+
+    .frame-wrap { 
+      position: fixed; 
+      inset: 0; 
+    }
+
+    iframe { 
+      width: 100%; 
+      height: 100%; 
+      border: none; 
+      display: block; 
+      background: #090507; 
+    }
+
+    #loading {
+      position: fixed; 
+      inset: 0; 
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      justify-content: center; 
+      gap: 16px; 
+      background: #090507;
+      font-family: 'Segoe UI', Arial, sans-serif; 
+      transition: opacity 0.4s ease; 
+      z-index: 5;
+    }
+
+    #loading.hide { 
+      opacity: 0; 
+      pointer-events: none; 
+    }
+
+    .spinner {
+      width: 42px; 
+      height: 42px; 
+      border-radius: 50%;
+      border: 3px solid rgba(255, 105, 180, 0.2); 
+      border-top-color: #ff69b4;
+      box-shadow: 0 0 12px rgba(255, 105, 180, 0.5); 
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin { 
+      to { transform: rotate(360deg); } 
+    }
+
+    #loading p { 
+      color: #ff69b4; 
+      font-size: 14px; 
+      letter-spacing: 1px; 
+      text-transform: uppercase; 
+      margin: 0; 
+    }
+
+    #fallback {
+      position: fixed; 
+      inset: 0; 
+      display: none; 
+      flex-direction: column;
+      align-items: center; 
+      justify-content: center; 
+      gap: 12px; 
+      background: #090507;
+      font-family: 'Segoe UI', Arial, sans-serif; 
+      text-align: center; 
+      padding: 24px; 
+      z-index: 4;
+    }
+
+    #fallback.show { 
+      display: flex; 
+    }
+
+    #fallback h1 { 
+      color: #ff69b4; 
+      font-size: 22px; 
+      margin: 0; 
+    }
+
+    #fallback p { 
+      color: #ffb6c1; 
+      font-size: 14px; 
+      max-width: 360px; 
+      margin: 0; 
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>Loading</p>
+  </div>
+
+  <div id="fallback">
+    <h1>Nothing to show</h1>
+    <p>Set the iframe's src attribute in the HTML to an embeddable URL.</p>
+  </div>
+
+  <div class="frame-wrap">
+    <iframe id="embed" src="https://txxx.me/embed/13987387/" title="Embedded content" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    const iframe = document.getElementById('embed');
+    const loading = document.getElementById('loading');
+    const fallback = document.getElementById('fallback');
+    const src = iframe.getAttribute('src');
+
+    // Check if SRC is missing or empty
+    if (!src || src.trim() === '' || src === 'about:blank') {
+      loading.classList.add('hide');
+      fallback.classList.add('show');
+    } else {
+      let loaded = false;
+
+      iframe.addEventListener('load', () => {
+        loaded = true;
+        loading.classList.add('hide');
+      });
+
+      // Safety timeout set to 4 seconds (4000ms)
+      setTimeout(() => {
+        if (!loaded) {
+          loading.classList.add('hide');
+        }
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
