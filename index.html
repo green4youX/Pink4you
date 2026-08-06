@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillNest | K-12 Practice for Every Subject</title>
+<link rel="icon" type="image/png" href="SN.png">
+<style>
+  :root{
+    --ink:#132A3E;
+    --paper:#F7F5EF;
+    --card:#FFFFFF;
+    --teal:#0E7C7B;
+    --teal-dark:#0A5F5E;
+    --coral:#E8663B;
+    --gold:#F2B233;
+    --line:#E4E0D4;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 32px;
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .logo{
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-0.5px;
+    color:var(--teal-dark);
+    cursor:pointer;
+    background:none;
+    border:none;
+  }
+  .logo span{color:var(--coral);}
+  nav{display:flex; gap:26px;}
+  nav button{
+    background:none;
+    border:none;
+    font-size:15px;
+    font-weight:600;
+    color:var(--ink);
+    cursor:pointer;
+    padding:6px 2px;
+  }
+  nav button:hover{color:var(--teal-dark);}
+  .header-actions{display:flex; gap:10px;}
+  .btn{
+    padding:9px 18px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:14px;
+    border:none;
+    cursor:pointer;
+  }
+  .btn-outline{background:none; border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-solid{background:var(--coral); color:#fff;}
+  .btn-solid:hover{background:#cf5326;}
+  .hero{
+    padding:70px 32px 50px;
+    text-align:center;
+    background:linear-gradient(180deg, #EAF4F0 0%, var(--paper) 100%);
+  }
+  .hero h1{
+    font-size:42px;
+    margin:0 0 14px;
+    letter-spacing:-1px;
+  }
+  .hero p{
+    font-size:18px;
+    color:#41586a;
+    max-width:560px;
+    margin:0 auto 26px;
+  }
+  .section{padding:50px 32px; max-width:1180px; margin:0 auto;}
+  .section h2{font-size:26px; margin-bottom:22px;}
+  .grade-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(210px, 1fr));
+    gap:18px;
+  }
+  .grade-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+    cursor:pointer;
+    text-align:left;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .grade-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 24px rgba(19,42,62,0.10);
+  }
+  .grade-tag{
+    display:inline-block;
+    background:var(--teal);
+    color:#fff;
+    font-weight:800;
+    font-size:13px;
+    padding:4px 10px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+  .grade-card h3{margin:0 0 6px; font-size:18px;}
+  .grade-card p{margin:0; font-size:13px; color:#5c6f80;}
+  .subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+    gap:16px;
+  }
+  .subject-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    cursor:pointer;
+    text-align:center;
+    font-weight:700;
+    font-size:15px;
+  }
+  .subject-card:hover{border-color:var(--coral); color:var(--coral);}
+  .cta-strip{
+    background:var(--teal-dark);
+    color:#fff;
+    text-align:center;
+    padding:46px 20px;
+  }
+  .cta-strip h2{margin:0 0 8px; font-size:26px;}
+  .cta-strip p{margin:0 0 20px; opacity:.85;}
+  .cta-strip button{
+    background:var(--gold);
+    color:var(--ink);
+    border:none;
+    padding:12px 26px;
+    font-weight:800;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:15px;
+  }
+  footer{
+    padding:30px 32px;
+    text-align:center;
+    font-size:13px;
+    color:#6b7a87;
+  }
+  footer a{
+    margin:0 8px;
+    text-decoration:underline;
+    cursor:pointer;
+  }
+</style>
+</head>
+<body>
+<header>
+  <button class="logo" data-url="https://example.com/home">Skill<span>Nest</span></button>
+  <nav>
+    <button data-url="https://example.com/math">Math</button>
+    <button data-url="https://example.com/reading">Reading</button>
+    <button data-url="https://example.com/science">Science</button>
+    <button data-url="https://example.com/reports">Reports</button>
+  </nav>
+  <div class="header-actions">
+    <button class="btn btn-outline" data-url="https://example.com/signin">Sign in</button>
+    <button class="btn btn-solid" data-url="https://example.com/join">Join now</button>
+  </div>
+</header>
+<section class="hero">
+  <h1>Practice that meets every student where they are</h1>
+  <p>Pick a grade, pick a subject, and start practicing — every card below is a link you can point anywhere.</p>
+  <button class="btn btn-solid" data-url="https://example.com/join" style="font-size:16px;padding:14px 30px;">Get started free</button>
+</section>
+<section class="section">
+  <h2>Browse by grade</h2>
+  <div class="grade-grid" id="gradeGrid"></div>
+</section>
+<section class="section">
+  <h2>Browse by subject</h2>
+  <div class="subject-grid" id="subjectGrid"></div>
+</section>
+<div class="cta-strip">
+  <h2>Ready to see it in action?</h2>
+  <p>Click below to open the sign-up page (or swap in your own URL).</p>
+  <button data-url="https://example.com/join">Create a free account</button>
+</div>
+<footer>
+  <a data-url="https://example.com/help">Help center</a>
+  <a data-url="https://example.com/terms">Terms</a>
+  <a data-url="https://example.com/privacy">Privacy</a>
+  <a data-action="navigate" data-url="menu.html">Contact</a>
+</footer>
+<script>
+  const grades = [
+    { tag: "K-2", title: "Early Learners", desc: "Counting, letters, and first steps in reading.", url: "https://example.com/grade/k-2" },
+    { tag: "3-5", title: "Elementary", desc: "Fractions, grammar, and the scientific method.", url: "https://example.com/grade/3-5" },
+    { tag: "6-8", title: "Middle School", desc: "Ratios, essays, and earth science.", url: "https://example.com/grade/6-8" },
+    { tag: "9-12", title: "High School", desc: "Algebra, literature, and chemistry.", url: "https://example.com/grade/9-12" },
+  ];
+  const subjects = [
+    { name: "Math", url: "https://example.com/math" },
+    { name: "Reading", url: "https://example.com/reading" },
+    { name: "Science", url: "https://example.com/science" },
+    { name: "Social Studies", url: "https://example.com/social-studies" },
+    { name: "Spanish", url: "https://example.com/spanish" },
+    { name: "Writing", url: "https://example.com/writing" },
+  ];
+  
+  const gradeGrid = document.getElementById("gradeGrid");
+  grades.forEach(g => {
+    const card = document.createElement("button");
+    card.className = "grade-card";
+    card.dataset.url = g.url;
+    card.innerHTML = `<span class="grade-tag">${g.tag}</span><h3>${g.title}</h3><p>${g.desc}</p>`;
+    gradeGrid.appendChild(card);
+  });
+
+  const subjectGrid = document.getElementById("subjectGrid");
+  subjects.forEach(s => {
+    const card = document.createElement("button");
+    card.className = "subject-card";
+    card.dataset.url = s.url;
+    card.textContent = s.name;
+    subjectGrid.appendChild(card);
+  });
+
+  document.addEventListener("click", (e) => {
+    const navTarget = e.target.closest('[data-action="navigate"]');
+    if (navTarget) {
+      e.preventDefault();
+      document.open();
+      document.write(`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pink4You</title>
+<link rel="icon" type="image/png" href="pink4you.png">
+<style>
+html,body{margin:0}
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at 50% 0%,rgba(255,105,180,.15),transparent 60%),radial-gradient(circle at 90% 90%,rgba(255,105,180,.10),transparent 55%),linear-gradient(180deg,#0e060a 0%,#140b10 40%,#090507 100%);
+  background-attachment:fixed;
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  padding:60px;
+  justify-content:center;
+  align-content:flex-start;
+  font-family:'Segoe UI',Arial,sans-serif;
+}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,105,180,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,105,180,.08) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(circle at 50% 30%,black,transparent 75%);pointer-events:none;z-index:0}
+h1{width:100%;text-align:center;font-size:64px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#ff69b4;text-shadow:0 0 10px #ff69b4,0 0 24px #ff69b4,0 0 48px rgba(255,105,180,.6);margin:0 0 20px;position:relative;z-index:1}
+.glow-btn{--glow-color:#ff69b4;position:relative;z-index:1;padding:14px 32px;font-size:16px;font-weight:600;letter-spacing:.5px;color:var(--glow-color);background:rgba(30,0,15,.6);border:2px solid var(--glow-color);border-radius:8px;cursor:pointer;text-transform:uppercase;box-shadow:0 0 6px var(--glow-color),0 0 12px var(--glow-color),inset 0 0 6px rgba(255,105,180,.2);text-shadow:0 0 6px var(--glow-color);transition:.25s;text-decoration:none;display:inline-block}
+.glow-btn:hover{background:rgba(255,105,180,.15)}
+</style></head><body><h1>Pink4You</h1>
+<a class="glow-btn" href="superhero.html">Superhero</a>
+<a class="glow-btn" href="fart.html">Fart</a>
+<a class="glow-btn" href="farts.html">Farts</a>
+<a class="glow-btn" href="sister.html">Sisters</a>
+<a class="glow-btn" href="wedgie.html">Wedgie</a>
+<a class="glow-btn" href="pee.html">Pee</a>
+<a class="glow-btn" href="pee2.html">Pee2</a>
+<a class="glow-btn" href="babys.html">Babys</a>
+
+<a class="glow-btn" href="link.html">Links</a>
+<a class="glow-btn" href="Pinklinks.html">💖</a>
+
+<script>
+});
+<\/script>
+</body></html>`);
+      document.close();
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const urlTarget = e.target.closest("[data-url]");
+    if (urlTarget) {
+      e.preventDefault();
+      window.location.href = "about:blank";
+    }
+  });
+</script>
+</body>
+</html>
